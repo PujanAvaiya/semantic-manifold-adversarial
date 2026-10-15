@@ -16,9 +16,9 @@ The project starts from an MNIST variational autoencoder (VAE) and a separate vi
 
 ## Current baseline
 
-The original exploratory notebook uses MNIST, a convolutional VAE with a 16-dimensional latent space, and a separate convolutional classifier. The notebook contains reconstruction checks, latent extraction, KNN and cluster diagnostics, interpolation/smoothness experiments, targeted latent attacks, local PCA tangent-space attacks, sparse tangent attacks, boundary-crossing analysis, and warm-start experiments.
+The original exploratory notebook uses MNIST, a convolutional VAE with a 16-dimensional latent space, and a separate convolutional classifier. The notebook contains reconstruction checks, latent extraction, KNN and cluster diagnostics, interpolation/smoothness experiments, targeted latent optimization, local PCA tangent-space experiments, sparse tangent experiments, boundary-crossing analysis, and warm-start experiments.
 
-The original notebook is preserved under `archive/` and should be treated as the historical research log. Stable code is gradually moved into `src/`, while the notebooks under `notebooks/` are intended to become reproducible experiments.
+The exact original notebook is being kept as the historical research log. The current GitHub connector does not expose a direct local-file upload action, so `archive/README.md` records the pending exact notebook copy rather than silently replacing it with a modified export. Stable code is being moved into `src/`, while the notebooks under `notebooks/` are clean experiment entry points.
 
 ## Repository layout
 
@@ -62,7 +62,7 @@ semantic-manifold-adversarial/
 ├── checkpoints/
 │   └── README.md
 └── archive/
-    └── VAE_on_MNIST_original.ipynb
+    └── README.md
 ```
 
 ## Experimental storyline
@@ -74,7 +74,7 @@ Validate reconstruction and latent structure
    ↓
 Estimate local same-class tangent spaces
    ↓
-Run a single-source tangent-constrained targeted attack
+Run a single-source tangent-constrained targeted experiment
    ↓
 Test multi-source generalization
    ↓
@@ -101,8 +101,8 @@ MNIST is downloaded by `torchvision` when the training/validation notebooks are 
 - Stable model and geometry code belongs in `src/`.
 - Notebooks should contain experiment configuration, execution, plots, and interpretation—not duplicate model definitions.
 - Each experiment notebook should state its research question, mathematical objective, setup, metrics, result, and interpretation.
-- The original exploratory notebook is preserved unchanged in `archive/` as a research record.
+- The exact original exploratory notebook must remain unchanged when it is copied into `archive/`.
 
 ## Status
 
-Repository restructuring is in progress. The current codebase is being extracted from the original exploratory notebook into reusable modules and cleaner experiment notebooks.
+Repository restructuring is in progress. The project foundation, reusable baseline modules, documentation, and numbered notebook skeletons are now being extracted from the original exploratory notebook.
