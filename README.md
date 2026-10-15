@@ -2,23 +2,43 @@
 
 Research code and documentation for studying adversarial perturbations through the geometry of learned latent representations.
 
-The project starts from an MNIST variational autoencoder (VAE) and a separate victim classifier, then studies whether local latent geometry—especially PCA-estimated tangent spaces—can guide targeted, sparse, and boundary-aware adversarial perturbations.
+The project starts from an MNIST variational autoencoder (VAE) and a separate victim classifier, then studies whether local latent geometry—especially tangent/normal structure—can guide targeted perturbations that generalize beyond a single source example and eventually transfer across models.
 
-## Current research questions
+## Research principle
 
-1. Does the VAE learn a latent representation with meaningful local class geometry?
-2. Can a local same-class tangent space be estimated from nearby latent codes?
-3. Can targeted perturbations constrained to that tangent space cross a classifier decision boundary?
-4. Can the tangent coefficients be made sparse while retaining attack success?
-5. Do useful directions generalize across multiple source samples instead of only one example?
-6. Can geometry-derived warm starts improve later constrained optimization such as PDPGD-style attacks?
-7. Do the discovered directions or perturbations transfer across victim models?
+The project is intentionally staged. We do **not** add adaptive geometry, self-supervised retrieval, probabilistic direction models, or ensembles until simpler experiments show why they are needed.
+
+The authoritative eight-week plan is in [`docs/research_roadmap.md`](docs/research_roadmap.md). The notebook-to-stage mapping is in [`docs/experiments.md`](docs/experiments.md).
+
+## Eight-week plan
+
+```text
+Week 1  TNAR/ManiFool geometry, Jacobians, tangent/normal decomposition
+   ↓
+Week 2  Run current attack across many digit 1 samples + diagnostics
+   ↓
+Week 3  Fix only diagnosed problems:
+        adaptive neighbors / adaptive r / target alignment / relinearization
+   ↓
+Week 4  Remove labels and test self-supervised semantic neighbors
+   ↓
+Week 5  Deterministic transfer baselines + simple sampling around a*
+   ↓
+        promising?
+        ├── no  → do not build a learned distribution
+        └── yes ↓
+Week 6  Derive and test q_psi(a | z, t)
+   ↓
+Week 7  Surrogate ensemble + unseen architectures
+   ↓
+Week 8  Ablations, plots, failure analysis, determine actual contribution
+```
 
 ## Current baseline
 
-The original exploratory notebook uses MNIST, a convolutional VAE with a 16-dimensional latent space, and a separate convolutional classifier. The notebook contains reconstruction checks, latent extraction, KNN and cluster diagnostics, interpolation/smoothness experiments, targeted latent optimization, local PCA tangent-space experiments, sparse tangent experiments, boundary-crossing analysis, and warm-start experiments.
+The original exploratory notebook uses MNIST, a convolutional VAE with a 16-dimensional latent space, and a separate convolutional classifier. It contains reconstruction checks, latent extraction, KNN and cluster diagnostics, interpolation/smoothness experiments, targeted latent optimization, local PCA tangent-space experiments, sparse tangent experiments, boundary-crossing analysis, and warm-start experiments.
 
-The exact original notebook is being kept as the historical research log. The current GitHub connector does not expose a direct local-file upload action, so `archive/README.md` records the pending exact notebook copy rather than silently replacing it with a modified export. Stable code is being moved into `src/`, while the notebooks under `notebooks/` are clean experiment entry points.
+The exact original notebook is being kept as the historical research log. The current GitHub connector does not expose a direct local-file upload action, so `archive/README.md` records the pending exact notebook copy rather than silently replacing it with a modified export. Stable code lives in `src/`, while notebooks are clean experiment entry points.
 
 ## Repository layout
 
@@ -47,15 +67,22 @@ semantic-manifold-adversarial/
 ├── notebooks/
 │   ├── 01_train_vae.ipynb
 │   ├── 02_validate_latent_space.ipynb
-│   ├── 03_single_source_tangent_attack.ipynb
-│   ├── 04_multi_source_tangent_generalization.ipynb
-│   ├── 05_boundary_warm_start_pdpgd.ipynb
-│   └── 06_transferability_experiments.ipynb
+│   ├── 03_geometry_jacobian_tangent_normal.ipynb
+│   ├── 04_multi_source_attack_diagnostics.ipynb
+│   ├── 05_adaptive_geometry_ablation.ipynb
+│   ├── 06_self_supervised_neighbor_retrieval.ipynb
+│   ├── 07_deterministic_transfer_baselines.ipynb
+│   ├── 08_sampling_around_optimal_direction.ipynb
+│   ├── 09_learned_direction_distribution.ipynb
+│   ├── 10_surrogate_ensemble_transfer.ipynb
+│   ├── 11_unseen_architecture_transfer.ipynb
+│   └── 12_ablation_failure_analysis.ipynb
 ├── docs/
 │   ├── problem_formulation.md
 │   ├── vae_and_latent_space.md
 │   ├── manifold_geometry.md
 │   ├── attack_method.md
+│   ├── research_roadmap.md
 │   ├── experiments.md
 │   └── results.md
 ├── figures/
@@ -65,23 +92,13 @@ semantic-manifold-adversarial/
     └── README.md
 ```
 
-## Experimental storyline
+## Stage gates
 
-```text
-Train VAE
-   ↓
-Validate reconstruction and latent structure
-   ↓
-Estimate local same-class tangent spaces
-   ↓
-Run a single-source tangent-constrained targeted experiment
-   ↓
-Test multi-source generalization
-   ↓
-Use geometry-derived boundary warm starts
-   ↓
-Evaluate transferability across victim models
-```
+Three gates prevent unnecessary complexity:
+
+1. **Week 2 → Week 3:** only failures observed in the multi-source diagnostics justify adaptive geometry.
+2. **Week 4:** label-free semantic neighborhoods must be good enough to support the geometry before the project can claim reduced supervision.
+3. **Week 5 → Week 6:** implement `q_psi(a | z,t)` only if deterministic transfer plus simple sampling indicates that a useful transferable direction distribution exists.
 
 ## Setup
 
@@ -99,10 +116,12 @@ MNIST is downloaded by `torchvision` when the training/validation notebooks are 
 
 - Large model checkpoints and generated datasets are not committed directly to Git.
 - Stable model and geometry code belongs in `src/`.
-- Notebooks should contain experiment configuration, execution, plots, and interpretation—not duplicate model definitions.
-- Each experiment notebook should state its research question, mathematical objective, setup, metrics, result, and interpretation.
-- The exact original exploratory notebook must remain unchanged when it is copied into `archive/`.
+- Notebooks contain experiment configuration, execution, diagnostics, plots, and interpretation—not duplicate model definitions.
+- Every experiment states its baseline, changed variable, metrics, stopping rule, and failure cases.
+- Per-sample results should be saved in machine-readable form before aggregate plotting.
+- The exact original exploratory notebook must remain unchanged when copied into `archive/`.
+- The final research contribution will be determined from the ablations and failure analysis, not selected in advance.
 
 ## Status
 
-Repository restructuring is in progress. The project foundation, reusable baseline modules, documentation, and numbered notebook skeletons are now being extracted from the original exploratory notebook.
+Repository foundation is in place. The roadmap is now evidence-driven and staged; experiments should proceed in the order defined in `docs/research_roadmap.md`.
