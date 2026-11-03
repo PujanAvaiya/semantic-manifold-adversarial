@@ -21,7 +21,7 @@ Data geometry learned independently of a victim classifier, when screened for re
 
 Frozen MNIST pretrained score model; independent classifier CNN-A, CNN-B, MLP, small ResNet; fixed score-noise scales t=5 and t=100. For an input x compare full gradient alignment, score-filtered gradient, estimated tangent bank, normal residual, same-rank random subspace and local PCA. Use paired image-level confidence intervals. Target model gradients for **offline scientific alignment only**; no use in attack generation/tuning. Supplement cosine with retained gradient norm, and matched-L2 actual target attack effect.
 
-Notebook: notebooks/research_archive/06_mnist_tangent_transfer_alignment.ipynb
+Notebook: notebooks/research_archive/11_mnist_tangent_transfer_alignment.ipynb
 
 **Stop/go:** If higher cosine is not accompanied by actual transfer benefit under matched budgets, do not motivate generator performance using cosine alone.
 
