@@ -74,12 +74,3 @@ The Week 1 notebook must verify this decomposition numerically and compare it wi
 
 These objects may interact, but they should not be treated as interchangeable without measurement.
 
-## Recognition pattern
-
-If you see: **nearby same-class latent points + local covariance/PCA/SVD**, think: **estimate a local tangent-like subspace**.
-
-If you see: **delta = B a**, think: **optimize coordinates inside that estimated local subspace instead of all latent coordinates independently**.
-
-If you see: **BB^T v**, think: **project `v` onto the estimated tangent space**.
-
-If you see: **v - BB^T v**, think: **normal component relative to that estimated tangent space**.
