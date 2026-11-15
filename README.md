@@ -4,11 +4,9 @@ Research code and documentation for studying adversarial perturbations through t
 
 The project starts from an MNIST variational autoencoder (VAE) and a separate victim classifier, then studies whether local latent geometry—especially tangent/normal structure—can guide targeted perturbations that generalize beyond a single source example and eventually transfer across models.
 
-## Research principle
+## Experiment sequence
 
-The project is intentionally staged. We do **not** add adaptive geometry, self-supervised retrieval, probabilistic direction models, or ensembles until simpler experiments show why they are needed.
-
-The authoritative eight-week plan is in [`docs/research_roadmap.md`](docs/research_roadmap.md). The notebook-to-stage mapping is in [`docs/experiments.md`](docs/experiments.md).
+The geometry and transfer experiments are organized by stage. The experiment plan is in [`docs/research_roadmap.md`](docs/research_roadmap.md). The notebook-to-stage mapping is in [`docs/experiments.md`](docs/experiments.md).
 
 ## Eight-week plan
 
@@ -38,7 +36,7 @@ Week 8  Ablations, plots, failure analysis, determine actual contribution
 
 The original exploratory notebook uses MNIST, a convolutional VAE with a 16-dimensional latent space, and a separate convolutional classifier. It contains reconstruction checks, latent extraction, KNN and cluster diagnostics, interpolation/smoothness experiments, targeted latent optimization, local PCA tangent-space experiments, sparse tangent experiments, boundary-crossing analysis, and warm-start experiments.
 
-The exact original notebook is being kept as the historical research log. The current GitHub connector does not expose a direct local-file upload action, so `archive/README.md` records the pending exact notebook copy rather than silently replacing it with a modified export. Stable code lives in `src/`, while notebooks are clean experiment entry points.
+The original exploratory notebook has not yet been imported into `archive/`. Reusable implementations are in `src/`, with experiment notebooks in `notebooks/`.
 
 ## Repository layout
 
@@ -94,7 +92,7 @@ semantic-manifold-adversarial/
 
 ## Stage gates
 
-Three gates prevent unnecessary complexity:
+The experiment sequence has three evaluation checkpoints:
 
 1. **Week 2 → Week 3:** only failures observed in the multi-source diagnostics justify adaptive geometry.
 2. **Week 4:** label-free semantic neighborhoods must be good enough to support the geometry before the project can claim reduced supervision.
@@ -124,4 +122,4 @@ MNIST is downloaded by `torchvision` when the training/validation notebooks are 
 
 ## Status
 
-Repository foundation is in place. The roadmap is now evidence-driven and staged; experiments should proceed in the order defined in `docs/research_roadmap.md`.
+Core model and geometry code, documentation, and experiment entry points are available. Several staged experiments remain placeholders.
