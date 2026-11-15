@@ -20,7 +20,7 @@ Do **not** conflate the two tangent representations. VAE latent PCA directions a
 
 ## Running a notebook
 
-Download/open the specific notebook via Colab; mount your own Drive, install declared dependencies, run the pilot configuration before the full configuration. Preserve FIT, CAL and held-out TEST splits and classifier-model separation.
+Download/open the specific notebook via Colab; mount the experiment Drive, install declared dependencies, run the pilot configuration before the full configuration. Preserve FIT, CAL and held-out TEST splits and classifier-model separation.
 
 ## Provenance and safety audit
 
@@ -33,4 +33,4 @@ Download/open the specific notebook via Colab; mount your own Drive, install dec
 
 ## Next import
 
-Download historical notebooks and CSVs from the other Google account and add them as original dated snapshots under archive/imports/**after review**. The notebooks available in this user's ChatGPT Library are indexed separately; some original checkpoints/results may remain in Google Drive only.
+Download historical notebooks and CSVs from the other Google account and add them as original dated snapshots under archive/imports/**after review**. Additional notebooks are listed in the notebook index; some original checkpoints/results remain outside the repository.
