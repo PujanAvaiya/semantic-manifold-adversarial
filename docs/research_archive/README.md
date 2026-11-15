@@ -1,6 +1,6 @@
 # Research archive — score geometry → black-box adversarial transfer
 
-**Status (2026-11-02):** consolidated research record. This section extends, and does not replace, the existing latent-VAE roadmap in this repository.
+**Status (2026-11-02):** consolidated experimental record covering score geometry and black-box transfer, alongside the earlier latent-VAE experiments.
 
 ## The scientific question
 
@@ -15,7 +15,7 @@ The work has two distinct stages:
 
 - [Findings and limitations](findings.md): grounded observations, sample counts, and caveats
 - [Notebook index](notebook_index.md): available notebook lineage and pending historical files
-- [Proposed experiment and proposal plan](proposal_plan.md): exact go/no-go tests
+- [Experiment plan](proposal_plan.md): exact go/no-go tests
 - [Reproduction and data provenance](reproduction.md): requirements, paths, run protocols
 
 ## Repository rules
@@ -27,10 +27,6 @@ The work has two distinct stages:
 - Estimated-rank and oracle-rank tangent errors are different metrics. A good estimate of intrinsic dimension is **not** a tangent-orientation guarantee.
 - Publication/novelty claims require comparison with current prior work. These notebooks do not establish state-of-the-art performance.
 
-## Importing additional notebooks from another Gmail/Colab account
-
-Google Colab/Drive files are account-scoped. GitHub access cannot automatically enumerate another Google account. Export **File → Download → Download .ipynb**, and download result CSVs from that account's Drive. Use a clean filename and retain the original in a private archive; add selected notebook copies only after reviewing outputs, secrets, and licensing. See the notebook index for known missing artifacts.
-
-## Proposed contribution (not an achieved result)
+## Generator experiment (not yet evaluated)
 
 Given clean image x, random variable ξ, frozen tangent estimate P̂_T(x), and reliability score U_T(x), investigate a generator G_φ(x, ξ, P̂_T, U_T) trained on surrogate classifiers and evaluated only on held-out target models. Whether tangent constraints help transfer is an **empirical hypothesis**. Do not assume tangency means semantic preservation.
