@@ -43,13 +43,13 @@ x_c=x+\delta\lambda\eta.
 
 ## Phase A — core mechanism on our existing ConvVAE
 
-We first keep our already-trained VAE fixed and ask only whether the geometric mechanism appears in our model.
+The existing trained VAE is held fixed to test the local geometric mechanism.
 
 Implementation: `src/latent_geometry/pullback_metric.py`
 
 Notebook: `notebooks/reproductions/2208_03923_core_pullback_attack.ipynb`
 
-For several MNIST test samples we will:
+For several MNIST test samples:
 
 1. compute `J_mu` and `J_sigma` with autograd;
 2. form the 784 x 784 pullback metric;
@@ -62,7 +62,7 @@ For several MNIST test samples we will:
 
 ### Positive reproduction criteria
 
-We will call the core mechanism reproduced on our VAE only if the dominant pullback direction consistently causes stronger local latent/reconstruction change than matched random directions over multiple samples, and if the effect increases sensibly with perturbation magnitude.
+The core mechanism is considered reproduced on this VAE only if the dominant pullback direction consistently causes stronger local latent/reconstruction change than matched random directions over multiple samples, and if the effect increases sensibly with perturbation magnitude.
 
 A visually dramatic reconstruction from one image is not sufficient evidence.
 
@@ -74,7 +74,7 @@ The paper prose states that 40 logarithmic steps are used over a range beginning
 np.logspace(-1, 1, 40)
 ```
 
-which is `0.1` to `10`. The figure values near `0.5233` and `0.7443` are consistent with the public-code grid. For figure-level reproduction we therefore use the public-code grid and record this discrepancy rather than silently choosing one.
+which is `0.1` to `10`. The figure values near `0.5233` and `0.7443` are consistent with the public-code grid. Figure-level reproduction uses the public-code grid and records the discrepancy.
 
 ## Phase B — paper-faithful beta-VAE sweep
 
@@ -84,7 +84,7 @@ The supplementary material specifies for MNIST/FashionMNIST an MLP encoder with 
 
 The authors also sweep beta over 50 logarithmically spaced values between `0.01` and `10` for robustness analysis.
 
-We will not mix Phase B into our own ConvVAE results: architecture-level reproduction and method-on-our-model validation answer different questions.
+Phase B results are kept separate from the ConvVAE experiment because the architectures and evaluation questions differ.
 
 ## Why this comes before TNAR/ManiFool
 
