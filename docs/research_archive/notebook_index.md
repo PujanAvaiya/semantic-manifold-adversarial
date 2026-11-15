@@ -27,7 +27,7 @@
 
 The repository already contains numbered notebooks under [notebooks/](../../notebooks/) and docs for earlier latent-VAE work. They are not replaced by this import. Some prior notebooks are scaffolds rather than completed experimental runs.
 
-## Located in ChatGPT Library; not yet incorporated into the curated branch
+## Not yet incorporated into the repository
 
 **64 additional notebook filenames** are discoverable in the Library. Many are variant versions and experiments; original output retention, code provenance, redundancy and access rights need review before public import. In particular, the large historical VAE/PDPGD notebooks remain source artifacts, not silently rewritten substitutes.
 
