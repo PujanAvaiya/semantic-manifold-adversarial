@@ -23,11 +23,11 @@ At (L2=2,Linf=.4), score-bank-minus-full target-margin difference -0.9891, 95% i
 
 IMPORTANT: The expensive direct-score filter is a different mechanism from the finite score bank: it reapplies the frozen original-image score filter to each new surrogate gradient, and was evaluated on only eight images with CNN-A as source. At (L2=4,Linf=.7), direct score filtering minus PCA bank gave ASR difference +0.2500 with image-bootstrap CI [+0.1250,+0.4167], and minus random bank +0.2083 CI [0,+0.375]. This result is from eight images and 24 source/target observations, so do not pool it with the 24-image attack curve or infer direct-score advantage against full-space PGD.
 
-## Interpretation for proposal
+## Interpretation
 Supported: multi-step attacks can cause nonzero black-box transfer; hard restriction to this fixed finite score-filtered bank is ineffective; hybrid mixing recovers much of the strength of unrestricted PGD but remains below full-space PGD.
 
 Not supported: gradient alignment ensures attack transfer; true manifold-tangent attacks fail; direct score filtering fails; semantic validity is preserved; or any geometry method improves held-out target ASR against full-space PGD.
 
 The next efficient analysis should compare direct filtering and full-space PGD on the identical eight-image subset, inspect bank rank and retained gradient energy, and evaluate achieved L2 and Linf per method before broadening the experiment. Semantic checks are still needed.
 
-Data provenance: five screenshot plots and truncated paired-bootstrap data provided by the user; raw multistep CSVs pending. The Colab notebook is named MNIST_Multistep_Transfer_PGD_Colab.ipynb and available in the user's ChatGPT Library. 
+Data provenance: five available screenshot plots and truncated paired-bootstrap data; raw multistep CSVs pending. The Colab notebook is named MNIST_Multistep_Transfer_PGD_Colab.ipynb but is not tracked in this repository. 
