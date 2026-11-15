@@ -290,7 +290,7 @@ Categorize failures rather than hiding them. Examples:
 ### Final question
 What is the smallest claim supported by the evidence?
 
-Possible contributions must emerge from the results; they are not fixed in advance.
+Record findings supported by the results, including failed comparisons.
 
 ### Deliverable
 - final plots
@@ -324,4 +324,4 @@ Promising? ── no ──> skip learned q_psi
 Week 6 q_psi(a | z,t)
 ```
 
-This keeps the project evidence-driven and prevents the final method from becoming a collection of unmotivated components.
+The conditional stages depend on the preceding experimental results.
