@@ -1,8 +1,8 @@
 # Experiment Notebook Map
 
-The authoritative research schedule is in [`research_roadmap.md`](research_roadmap.md). This file maps that eight-week plan to reproducible notebooks.
+The research schedule is in [`research_roadmap.md`](research_roadmap.md). This file maps that eight-week plan to reproducible notebooks.
 
-The first two notebooks are prerequisites that establish the VAE representation. Notebooks 03–12 follow the staged research plan. Later notebooks are intentionally conditional: do not implement them early merely because a placeholder exists.
+The first two notebooks are prerequisites that establish the VAE representation. Notebooks 03–12 follow the staged research plan. The later notebooks are conditional on the outcomes of the earlier experiments.
 
 ## Prerequisite — Notebook 01: Train VAE
 
@@ -88,8 +88,6 @@ Only if Week 5 is promising, derive and implement a conditional distribution
 
 and compare it against deterministic `a*`, random tangent sampling, and simple local sampling around `a*`.
 
-Do not implement this stage merely to complete the notebook sequence.
-
 ## Week 7A — Notebook 10: Surrogate Ensemble
 
 `10_surrogate_ensemble_transfer.ipynb`
@@ -110,7 +108,7 @@ Produce a transfer matrix that identifies whether architecture and/or initializa
 
 Stop adding components. Perform the final ablations, plots, failure taxonomy, limitations analysis, and contribution identification.
 
-The final contribution must be inferred from the experimental evidence rather than selected in advance.
+Summarize supported findings and negative results after the ablations.
 
 ---
 
