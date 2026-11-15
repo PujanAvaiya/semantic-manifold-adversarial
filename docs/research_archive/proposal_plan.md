@@ -1,8 +1,4 @@
-# Proposal integration and final experiments
-
-## Working title
-
-**Geometry-Reliable Adversarial Generation for Surrogate-Robust Black-Box Transfer**
+# Remaining experiments
 
 ## Main hypothesis
 
@@ -33,17 +29,8 @@ Compare PGD, random subspace, local PCA, fixed score geometry, and frozen reliab
 
 Compare capacity/training-matched G_φ(x, ξ) and G_φ(x, ξ, P̂_T, U_T). Same surrogate supervision, perturbation budget, and semantic checks; held-out classifiers only for evaluation. Do not introduce a new EBM or new manifold geometry estimator before these tests.
 
-**Stop/go:** A well documented negative result still supports a bounded PhD proposal; there is no requirement to prove a generator works before writing the proposal.
+**Stop/go:** Record negative results and retain the simpler baseline if the conditioned generator shows no measured benefit.
 
-## Proposal structure
-
-1. Motivation: transferable black-box vulnerabilities and surrogate dependence.
-2. Gap: data-geometry evidence may be uncertain; tangent≠semantic and geometric rank≠orientation.
-3. Preliminary evidence: F1–F6 with explicit limits.
-4. Proposed three research objectives: reliable geometry; relationship to transfer; generator conditioning.
-5. Experimental protocol and baselines, held-out model seeds, uncertainty and semantic-valid success.
-6. Expected (not achieved) contributions and failure-contingency plan.
-
-## Research ethics/reproduction
+## Reproduction constraints
 
 Use only permitted models/datasets and non-production test classifiers. Never publish secrets, raw personal images, private Drive files, pretrained checkpoints, or any victim credentials.
