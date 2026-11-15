@@ -1,6 +1,6 @@
 # Results
 
-This file is intentionally a structured results log rather than a place for unverified conclusions.
+Experiment metrics and observations are recorded here after evaluation.
 
 ## Baseline status
 
