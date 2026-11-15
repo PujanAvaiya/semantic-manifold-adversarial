@@ -53,7 +53,7 @@ A noise-calibrated tangent-scale selector yielded lower **proxy risk** on one mo
 
 ## F7 — Existing adversarial work, separate from transfer
 
-The user's earlier MNIST classifier/targeted PDPGD benchmark reported ~98.58% CNN test accuracy and a digit 1→7 targeted example at step 59, L1 ≈15.28, L2 ≈1.83, ~243 nonzero pixels. This is **not evidence of transfer to unseen black-box classifiers**.
+An earlier MNIST classifier/targeted PDPGD benchmark reported ~98.58% CNN test accuracy and a digit 1→7 targeted example at step 59, L1 ≈15.28, L2 ≈1.83, ~243 nonzero pixels. This is **not evidence of transfer to unseen black-box classifiers**.
 
 ## Open hypotheses (not proven)
 
@@ -61,4 +61,4 @@ The user's earlier MNIST classifier/targeted PDPGD benchmark reported ~98.58% CN
 2. Reliability-aware geometry makes target-query-free transfer attacks stronger at matched distortion and semantic validity.
 3. A geometry-conditioned generator can reduce sensitivity to the training surrogate.
 
-The alignment and transfer notebooks are *planned/run on Colab separately*. Until real result CSVs are imported, do not claim improvement or significance.
+The alignment and transfer evaluations are documented separately. Until real result CSVs are imported, do not claim improvement or significance.
